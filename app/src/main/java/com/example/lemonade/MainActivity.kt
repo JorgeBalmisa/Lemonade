@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -69,22 +70,27 @@ fun Lemonade(modifier : Modifier = Modifier) {
         3 -> R.drawable.lemon_drink
         else -> R.drawable.lemon_restart
     }
+    Text(
+        text = stringResource(id = R.string.app_name),
+        textAlign = TextAlign.Center,
+
+        modifier = modifier
+            .background(color = Color(255,255,0))
+            .fillMaxWidth()
+            .wrapContentSize(Alignment.TopCenter)
+
+
+    )
     Column (
         modifier = modifier
         .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+
+
 
     ) {
-        Text(
-            text = stringResource(id = R.string.app_name),
-            textAlign = TextAlign.Center,
 
-            modifier = modifier
-            .background(color = Color(255,255,0))
-                .fillMaxWidth()
-                .wrapContentSize(Alignment.TopCenter)
-
-        )
 
 
         Button(
@@ -111,7 +117,5 @@ fun Lemonade(modifier : Modifier = Modifier) {
 @Preview
 @Composable
 fun LemonadeApp() {
-Lemonade(modifier = Modifier
-    .fillMaxSize()
-    .wrapContentSize(Alignment.Center))
+Lemonade()
 }
