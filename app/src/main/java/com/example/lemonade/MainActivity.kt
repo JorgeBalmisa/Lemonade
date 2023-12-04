@@ -49,6 +49,8 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Lemonade(modifier : Modifier = Modifier) {
     var result by remember {mutableStateOf(1)}
+    var randomLemon = (2..4).random()
+    var clickLemon = 0
 
     var textoDeAbajo = when (result) {
         1 -> stringResource(R.string.tocar_limonero)
@@ -95,10 +97,18 @@ fun Lemonade(modifier : Modifier = Modifier) {
 
         Button(
             onClick = {
-                result += 1
+                if (result == 2) {
+                    clickLemon +=1
+                    if (clickLemon == randomLemon)
+                        result ++
+                } else {
+                    result += 1
+                }
                 if (result > 4) {
                     result = 1
+
                 }
+
             },
             content = {
                 Image(
